@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { BiSearchAlt } from "react-icons/bi";
+import { FiShoppingCart } from "react-icons/fi";
 const Header = () => {
   return (
     <header>
@@ -28,8 +29,20 @@ const Header = () => {
           </div>
         </div>
         {/* Text Section */}
-        <div>
-            
+        <div className="text-white flex items-center text-xs space-x-6 mx-6 ">
+          <div className="link">
+            <p>Hello Sign In</p>
+            <p className="font-extrabold sm:text-sm">Account & lists</p>
+          </div>
+          <div className="link">
+            <p>Returns</p>
+            <p className="font-extrabold sm:text-sm">& Orders</p>
+          </div>
+          <div className="link relative flex items-center">
+            <FiShoppingCart className="h-10 w-7" />
+            <span className="absolute  bottom-7 left-5 ">0</span>
+            <p className="font-extrabold sm:text-sm hidden md:inline">Basket</p>
+          </div>
         </div>
       </div>
       {/* This is bottom nav section  */}
