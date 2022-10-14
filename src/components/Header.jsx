@@ -4,7 +4,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 
-import classes from "./Header.module.css";
+import classes from "./Style.module.css";
 const Header = () => {
   return (
     <header>

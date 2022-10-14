@@ -14,3 +14,14 @@
     right: 50%;
   }
 }
+/* star style */
+.icon-style {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+  justify-content: center;
+}
+.icon {
+  font-size: 2rem;
+  color: orange;
+}

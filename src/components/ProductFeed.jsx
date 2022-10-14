@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Product from "./Product";
 
-const ProductFeed = () => {
+const ProductFeed = ({ products }) => {
   return (
-    <div>ProductFeed</div>
-  )
-}
+    <div>
+      <h1>Products here....</h1>
+      {products.map((e) => (
+        <Product key={e.id} e={e} />
+      ))}
+    </div>
+  );
+};
 
-export default ProductFeed
+export default ProductFeed;
