@@ -5,9 +5,11 @@ const ProductFeed = ({ products }) => {
   return (
     <div>
       <h1>Products here....</h1>
-      {products.map((e) => (
-        <Product key={e.id} e={e} />
-      ))}
+      <div className="grid grid-cols-4">
+        {products.map((e) => (
+          <Product key={e.id} e={e} />
+        ))}
+      </div>
     </div>
   );
 };
