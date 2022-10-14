@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import Currency from "react-currency-formatter";
-import classes from "./style.module.css";
+
 const Product = ({ e }) => {
   const { id, title, price, description, category, image, rating } = e;
   const [hasPrime] = useState(true);
@@ -12,11 +12,11 @@ const Product = ({ e }) => {
     return (
       <span key={index}>
         {rating.rate >= index + 1 ? (
-          <FaStar className={classes.icon} />
+          <FaStar className="text-yellow-400 text-2xl" />
         ) : rating.rate >= numbers ? (
-          <FaStarHalfAlt className={classes.icon} />
+          <FaStarHalfAlt className="text-yellow-400 text-2xl" />
         ) : (
-          <AiOutlineStar className={classes.icon} />
+          <AiOutlineStar className="text-yellow-400 text-2xl" />
         )}
       </span>
     );
@@ -29,7 +29,7 @@ const Product = ({ e }) => {
       </p>
       <Image src={image} height={200} width={200} objectFit="contain" />
       <h4 className="my-4">{title}</h4>
-      <div className="flex">{ratingStar}</div>
+      <div className="flex text-sm">{ratingStar}</div>
       <p className="text-xs my-2 line-clamp-2">{description}</p>
       <div className="mb-5">
         <Currency quantity={price} currency="GBP" />
@@ -44,7 +44,7 @@ const Product = ({ e }) => {
           <p className="text-xs text-gray-500">Free Next-day Delivery</p>
         </div>
       )}
-      <button>Add to Basket</button>
+      <button className="mt-auto button">Add to Basket</button>
     </div>
   );
 };

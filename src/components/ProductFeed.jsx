@@ -4,8 +4,7 @@ import Product from "./Product";
 const ProductFeed = ({ products }) => {
   return (
     <div>
-      <h1>Products here....</h1>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-flow-row-dense grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 md:-mt-52 sm:-mt-40 md:grid-cols-2">
         {products.map((e) => (
           <Product key={e.id} e={e} />
         ))}
