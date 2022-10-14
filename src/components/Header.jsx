@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import { BiSearchAlt } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";
+import { AiOutlineMenu } from "react-icons/ai";
+
+import classes from "./Header.module.css";
 const Header = () => {
   return (
     <header>
@@ -39,14 +42,29 @@ const Header = () => {
             <p className="font-extrabold sm:text-sm">& Orders</p>
           </div>
           <div className="link relative flex items-center">
+            <span className={classes.span}>0</span>
             <FiShoppingCart className="h-10 w-7" />
-            <span className="absolute  bottom-7 left-5 ">0</span>
             <p className="font-extrabold sm:text-sm hidden md:inline">Basket</p>
           </div>
         </div>
       </div>
       {/* This is bottom nav section  */}
-      <div></div>
+      <div className="flex items-center gap-6 p-2 pl-6 bg-amazon_blue-light text-white">
+        <p className="flex items-center link">
+          <AiOutlineMenu className="h-6 mr-1" />
+          All
+        </p>
+        <p className="link">Todays's Deals</p>
+        <p className="link">Buy again</p>
+        <p className="link">Customer Service</p>
+        <p className="link">Gift Cards</p>
+        <p className="link">Registry</p>
+        <p className="link hidden lg:inline-block">Sell</p>
+        <p className="link hidden lg:inline-block">Prices</p>
+        <p className="link hidden lg:inline-block">Buy Now</p>
+        <p className="link hidden lg:inline-block">Laptops</p>
+        <p className="link hidden lg:inline-block">Products</p>
+      </div>
     </header>
   );
 };
