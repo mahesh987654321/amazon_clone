@@ -13,6 +13,9 @@
   .span {
     right: 50%;
   }
+  .g_2 {
+    grid-column: span 2 / span 2;
+  }
 }
 /* star style */
 .icon-style {

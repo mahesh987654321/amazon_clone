@@ -8,6 +8,10 @@ export default function Home({ products }) {
     <div className="bg-gray-100 h-screen">
       <Head>
         <title>Amazon 2.0</title>
+        <link
+          rel="icon"
+          href="https://i.pinimg.com/originals/01/ca/da/01cada77a0a7d326d85b7969fe26a728.jpg"
+        />
       </Head>
       <Header />
       <main style={{ maxWidth: "1300px", margin: "0 auto" }}>

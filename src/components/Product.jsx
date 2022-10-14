@@ -4,8 +4,16 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import Currency from "react-currency-formatter";
 
-const Product = ({ e }) => {
-  const { id, title, price, description, category, image, rating } = e;
+const Product = ({
+  id,
+  title,
+  price,
+  description,
+  category,
+  image,
+  rating,
+}) => {
+  // const = e;
   const [hasPrime] = useState(true);
   const ratingStar = Array.from({ length: 5 }, (e, index) => {
     let numbers = index + 0.5;
