@@ -3,7 +3,7 @@ import Image from "next/image";
 import { BiSearchAlt } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
-
+import { signIn, signOut, useSession } from "next-auth/react";
 import classes from "./Style.module.css";
 const Header = () => {
   return (
@@ -33,7 +33,7 @@ const Header = () => {
         </div>
         {/* Text Section */}
         <div className="text-white flex items-center text-xs space-x-6 mx-6 ">
-          <div className="link">
+          <div onClick={signIn} className="link">
             <p>Hello Sign In</p>
             <p className="font-extrabold sm:text-sm">Account & lists</p>
           </div>
