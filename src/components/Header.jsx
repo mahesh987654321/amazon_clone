@@ -39,6 +39,7 @@ const Header = () => {
             <p className="font-bold">
               {session ? `Hello ${session.user.name}` : "Sign In"}
             </p>
+            <p className="font-extrabold sm:text-sm">Account & lists</p>
           </div>
           <div className="link">
             <p>Returns</p>
