@@ -6,6 +6,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { signIn, signOut, useSession } from "next-auth/react";
 import classes from "./Style.module.css";
 const Header = () => {
+  const { data: session } = useSession();
+
   return (
     <header>
       {/* This is top nav section */}
@@ -33,9 +35,10 @@ const Header = () => {
         </div>
         {/* Text Section */}
         <div className="text-white flex items-center text-xs space-x-6 mx-6 ">
-          <div onClick={signIn} className="link">
-            <p>Hello Sign In</p>
-            <p className="font-extrabold sm:text-sm">Account & lists</p>
+          <div onClick={!session ? signIn : signOut} className="link">
+            <p className="font-bold">
+              {session ? `Hello ${session.user.name}` : "Sign In"}
+            </p>
           </div>
           <div className="link">
             <p>Returns</p>
