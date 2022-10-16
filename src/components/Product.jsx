@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import Currency from "react-currency-formatter";
+import { addToBasket } from "../slices/basketSlice";
+import { useDispatch } from "react-redux";
 
 const Product = ({
   id,
@@ -13,6 +15,9 @@ const Product = ({
   image,
   rating,
 }) => {
+  const dispatch = useDispatch(addToBasket);
+  console.log(dispatch);
+  const addToBusketFunction = () => {};
   // const = e;
   const [hasPrime] = useState(true);
   const ratingStar = Array.from({ length: 5 }, (e, index) => {
@@ -52,7 +57,9 @@ const Product = ({
           <p className="text-xs text-gray-500">Free Next-day Delivery</p>
         </div>
       )}
-      <button className="mt-auto button">Add to Basket</button>
+      <button onClick={addToBusketFunction} className="mt-auto button">
+        Add to Basket
+      </button>
     </div>
   );
 };
