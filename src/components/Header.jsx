@@ -6,11 +6,15 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { signIn, signOut, useSession } from "next-auth/react";
 import classes from "./Style.module.css";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
 const Header = () => {
   const { data: session } = useSession();
   const router = useRouter();
+  const items = useSelector(selectItems);
+
   return (
-    <header>
+    <header style={{ position: "sticky", top: "0", zIndex: "999" }}>
       {/* This is top nav section */}
 
       {/* Images section */}
@@ -51,7 +55,7 @@ const Header = () => {
             onClick={() => router.push("/checkout")}
             className="link relative flex items-center"
           >
-            <span className={classes.span}>0</span>
+            <span className={classes.span}>{items.length}</span>
             <FiShoppingCart className="h-10 w-7" />
             <p className="font-extrabold sm:text-sm hidden md:inline">Basket</p>
           </div>

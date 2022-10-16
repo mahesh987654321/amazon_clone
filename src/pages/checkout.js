@@ -1,8 +1,12 @@
 import Image from "next/image";
 import React from "react";
+import { useSelector } from "react-redux";
 import Header from "../components/Header";
+import { selectItems } from "../slices/basketSlice";
 
 const Checkout = () => {
+  const items = useSelector(selectItems);
+
   return (
     <div className="bg-gray-100">
       <Header />
@@ -24,7 +28,9 @@ const Checkout = () => {
                 borderBottomWidth: "1px",
               }}
             >
-              Your shopping items
+              {items.length === 0
+                ? "Your amazon basket is empty"
+                : `You have selected total ${items.length} item from lists`}
             </h1>
           </div>
         </div>

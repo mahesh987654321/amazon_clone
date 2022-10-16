@@ -15,9 +15,19 @@ const Product = ({
   image,
   rating,
 }) => {
-  const dispatch = useDispatch(addToBasket);
-  console.log(dispatch);
-  const addToBusketFunction = () => {};
+  const dispatch = useDispatch();
+  const addToBusketFunction = () => {
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image,
+      rating,
+    };
+    dispatch(addToBasket(product));
+  };
   // const = e;
   const [hasPrime] = useState(true);
   const ratingStar = Array.from({ length: 5 }, (e, index) => {
