@@ -28,3 +28,8 @@
   font-size: 1rem;
   color: orange;
 }
+.g_3 {
+  grid-column: span 3 / span 3;
+  margin-left: 1.25rem /* 20px */;
+  margin-right: 1.25rem;
+}
