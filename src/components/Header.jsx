@@ -5,9 +5,10 @@ import { FiShoppingCart } from "react-icons/fi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { signIn, signOut, useSession } from "next-auth/react";
 import classes from "./Style.module.css";
+import { useRouter } from "next/router";
 const Header = () => {
   const { data: session } = useSession();
-
+  const router = useRouter();
   return (
     <header>
       {/* This is top nav section */}
@@ -16,6 +17,7 @@ const Header = () => {
       <div className="flex items-center flex-grow py-1 bg-amazon_blue">
         <div className="flex mt-2 flex-grow items-center sm:flex-grow-0">
           <Image
+            onClick={() => router.push("/")}
             src="https://links.papareact.com/f90"
             width={150}
             height={40}
@@ -45,7 +47,10 @@ const Header = () => {
             <p>Returns</p>
             <p className="font-extrabold sm:text-sm">& Orders</p>
           </div>
-          <div className="link relative flex items-center">
+          <div
+            onClick={() => router.push("/checkout")}
+            className="link relative flex items-center"
+          >
             <span className={classes.span}>0</span>
             <FiShoppingCart className="h-10 w-7" />
             <p className="font-extrabold sm:text-sm hidden md:inline">Basket</p>
