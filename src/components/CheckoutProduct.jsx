@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import Currency from "react-currency-formatter";
 import { AiOutlineStar } from "react-icons/ai";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addToBasket, removeFromBasket } from "../slices/basketSlice";
 import classes from "./Style.module.css";
 const CheckoutProduct = ({ item }) => {
   const { category, description, image, price, title, rating, id } = item;
+
   const [hasPrime] = useState(true);
   const ratingStar = Array.from({ length: 5 }, (e, index) => {
     let numbers = index + 0.5;
@@ -22,6 +25,23 @@ const CheckoutProduct = ({ item }) => {
     );
   });
 
+  const dispatch = useDispatch();
+  const addItemToBasket = () => {
+    const product = {
+      category,
+      description,
+      image,
+      price,
+      title,
+      rating,
+      id,
+    };
+    dispatch(addToBasket(product));
+  };
+  const removeItemToBasket = () => {
+    console.log(dispatch(removeFromBasket(id)));
+    dispatch(removeFromBasket(id));
+  };
   return (
     <div className="grid grid-cols-5 items-center justify-center">
       <Image src={image} height={200} width={200} objectFit="contain" />
@@ -45,8 +65,12 @@ const CheckoutProduct = ({ item }) => {
         )}
       </div>
       <div className="gap-3 flex flex-col mx-auto justify-self-end">
-        <button className="mt-auto button">Add to Basket</button>
-        <button className="mt-auto button">Remove from Basket</button>
+        <button onClick={addItemToBasket} className="mt-auto button">
+          Add to Basket
+        </button>
+        <button onClick={removeItemToBasket} className="mt-auto button">
+          Remove from Basket
+        </button>
       </div>
     </div>
   );

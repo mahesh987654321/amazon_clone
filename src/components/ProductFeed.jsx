@@ -16,6 +16,7 @@ const ProductFeed = ({ products }) => {
               category={category}
               image={image}
               rating={rating}
+              id={id}
             />
           ))}
         <img
@@ -36,6 +37,7 @@ const ProductFeed = ({ products }) => {
                   category={category}
                   image={image}
                   rating={rating}
+                  id={id}
                 />
               )
             )}
@@ -51,6 +53,7 @@ const ProductFeed = ({ products }) => {
               category={category}
               image={image}
               rating={rating}
+              id={id}
             />
           ))}
       </div>

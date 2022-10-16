@@ -28,6 +28,7 @@ const Product = ({
     };
     dispatch(addToBasket(product));
   };
+
   // const = e;
   const [hasPrime] = useState(true);
   const ratingStar = Array.from({ length: 5 }, (e, index) => {
