@@ -3,15 +3,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 import CheckoutProduct from "../components/CheckoutProduct";
 import Header from "../components/Header";
-import { selectItems } from "../slices/basketSlice";
-
+import { selectItems, selectTotal } from "../slices/basketSlice";
+import Currency from "react-currency-formatter";
+import { signIn, signOut, useSession } from "next-auth/react";
+import classes from "../components/Style.module.css";
 const Checkout = () => {
   const items = useSelector(selectItems);
-
+  const total = useSelector(selectTotal);
+  const { data: session } = useSession();
   return (
     <div className="bg-gray-100">
       <Header />
-      <main style={{ maxWidth: "1400px" }} className="lg:flex mx-auto">
+      <main style={{ maxWidth: "1200px" }} className="lg:flex mx-auto">
         {/* Left section */}
         <div className="flex-grow shadow-sm m-5">
           <Image
@@ -39,7 +42,25 @@ const Checkout = () => {
           </div>
         </div>
         {/* Right section */}
-        <div></div>
+        <div className="flex flex-col p-10 bg-white shadow-lg">
+          <h2>
+            {items.length > 0 && (
+              <>
+                <h2 className="whitespace-nowrap">
+                  Subtotal ({items.length}) items:
+                  <span className=" pl-3 font-bold">
+                    <Currency quantity={total} currency="GBP" />
+                  </span>
+                </h2>
+              </>
+            )}
+          </h2>
+          <button
+            className={`button mt-5 ${!session && `${classes.button_session}`}`}
+          >
+            {!session ? "Sign in to checkout" : "Proceed to check out"}
+          </button>
+        </div>
       </main>
     </div>
   );
