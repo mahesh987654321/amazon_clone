@@ -56,6 +56,7 @@ const Checkout = () => {
             )}
           </h2>
           <button
+            disabled={!session}
             className={`button mt-5 ${!session && `${classes.button_session}`}`}
           >
             {!session ? "Sign in to checkout" : "Proceed to check out"}
