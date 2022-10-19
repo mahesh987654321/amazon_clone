@@ -7,7 +7,20 @@ import { selectItems, selectTotal } from "../slices/basketSlice";
 import Currency from "react-currency-formatter";
 import { signIn, signOut, useSession } from "next-auth/react";
 import classes from "../components/Style.module.css";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+const stripePromise = loadStripe(
+  "pk_test_51L0pZ4AUO7tB19c8Hva7oAiaVErByVwyQEaBJHFoSkyJ19tOngF9uJfyn9LsAtc5YFvxI1jQPIyEqzOwlVAC9mbW002aRWepBD"
+);
+
 const Checkout = () => {
+  const createCheckOutSession = async () => {
+    const stripe = await stripePromise;
+    const checkOutSession = await axios.post("./api/create-checkout-session", {
+      items,
+      email: session.user.email,
+    });
+  };
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
   const { data: session } = useSession();
@@ -56,6 +69,8 @@ const Checkout = () => {
             )}
           </h2>
           <button
+            onClick={createCheckOutSession}
+            role="link"
             disabled={!session}
             className={`button mt-5 ${!session && `${classes.button_session}`}`}
           >
