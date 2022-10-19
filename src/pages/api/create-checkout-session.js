@@ -17,18 +17,19 @@ export default async function handler(req, res) {
     }
   });
   const session = await stripe.checkout.sessions.create({
+    shipping_address_collection: {
+      allowed_countries: ["GB", "US", "CN", "BD", "IN"],
+    },
+    shipping_rates: [`shr_1LuXTpAUO7tB19c8Kuqtfs9u`],
     payment_method_types: ["card"],
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: "T-shirt",
-          },
-          unit_amount: 2000,
-        },
-        quantity: 1,
-      },
-    ],
+    line_items: transformItems,
+    mode: "payment",
+    success_url: `${process.env.HOST}/success`,
+    cancel_url: `${process.env.HOST}/checkout}`,
+    metadata: {
+      email,
+      images: JSON.stringify(items.map((item) => item.image)),
+    },
   });
+  res.status(200).json({ id: session.id });
 }
