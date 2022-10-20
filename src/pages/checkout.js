@@ -20,6 +20,12 @@ const Checkout = () => {
       items,
       email: session.user.email,
     });
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkOutSession.data.id,
+    });
+    if (result.error) {
+      alert(result.error.message);
+    }
   };
   const items = useSelector(selectItems);
   const total = useSelector(selectTotal);
